@@ -73,3 +73,14 @@ button {
 button:hover {
   transform: scale(1.08);
 }
+.falling {
+  position: fixed;           /* kartochkaga emas, butun ekranga nisbatan */
+  top: -40px;                /* ekrandan sal tepada boshlanadi */
+  font-size: 28px;
+  pointer-events: none;      /* tugmalarni bosishga xalaqit bermaydi */
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh); }   /* ekranning pastigacha tushadi */
+}
