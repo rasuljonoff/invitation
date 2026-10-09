@@ -1,0 +1,75 @@
+/* 1. Butun sahifa: tepada dengiz, pastda qum rangi */
+body {
+  margin: 0;                 /* brauzerning standart bo'sh joyini olib tashlaydi */
+  min-height: 100vh;         /* sahifa butun ekran balandligida bo'lsin */
+  display: grid;             /* grid maket: ichidagini boshqarish oson */
+  place-items: center;       /* ichidagi narsa gorizontal va vertikal o'rtada */
+  background: linear-gradient(180deg, #6fd0d0 0%, #bfe8e2 55%, #f3e2c0 100%);
+  font-family: Arial, sans-serif;
+}
+
+/* 2. Kartochka: qaymoq rangidagi quti */
+.card {
+  background-image: url("images.jpeg");
+  background-size: cover;
+  background-position: center;
+  position: relative;        /* keyin "NO" tugmasini shu ichida yurgizamiz */
+  width: 320px;
+  padding: 30px 30px 36px;   /* quti ichidagi bo'sh joy */
+  border-radius: 28px;       /* yumaloq burchaklar */
+  text-align: center;        /* ichidagi matn va tugmalar o'rtada */
+  box-shadow: 0 14px 40px rgba(14, 107, 115, 0.25);
+}
+
+/* 3. Kartochkaning TEPASIGA kofe belgisi (HTML ga tegmasdan) */
+.card::before {
+  content: "☕";
+  display: block;            /* alohida qatorga tushsin */
+  font-size: 44px;
+  margin-bottom: 10px;
+}
+
+/* 4. Kartochkaning PASTIGA to'lqinlar */
+.card::after {
+  content: "🌊 🌊 🌊";
+  display: block;
+  margin-top: 28px;
+  font-size: 22px;
+}
+
+/* 5. Savol matni (id="text_1") */
+#text_1 {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 28px;
+  color: #00d9ffa0;            /* chuqur dengiz (to'q firuza) rangi */
+  margin: 0 0 30px;
+  text-transform: capitalize;
+}
+
+/* 6. Hamma tugmalarga umumiy ko'rinish */
+button {
+  font-size: 18px;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 999px;      /* to'liq yumaloq (kapsula) tugma */
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+/* 7. Har bir tugmaga alohida rang */
+#btn_yes {
+  background: #8b5a3c;       /* kofe rangi */
+  color: #fff6e8;
+  box-shadow: 0 6px 16px rgba(139, 90, 60, 0.4);
+}
+
+#btn_no {
+  background: #f1e4cc;       /* qum rangi */
+  color: #a08a68;
+}
+
+/* 8. Ustiga kelganda tugma sal kattalashadi */
+button:hover {
+  transform: scale(1.08);
+}

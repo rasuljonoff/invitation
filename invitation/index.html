@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVITATION</title>
+    <link rel="stylesheet" href="invite.css">
+</head>
+<body>
+<div class="card">
+    <h1 id="text_1">How About We Grab a Coffee and go for a walk?</h1>
+    <br>
+    <button id="btn_yes">YES</button>
+    <br>
+    <button id="btn_no">NO</button></div>
+    <script>// 1. HTML dagi elementlarni topib, o'zgaruvchilarga saqlaymiz
+const card = document.querySelector(".card");
+const screen1 = document.getElementById("screen1");
+const screen2 = document.getElementById("screen2");
+const yesButton = document.getElementById("btn_yes");
+const noButton = document.getElementById("btn_no");
+
+// 2. YES bosilganda: birinchi ekranni yashirib, ikkinchisini ko'rsatamiz
+yesButton.addEventListener("click", function () {
+  screen1.hidden = true;
+  screen2.hidden = false;
+});
+
+// 3. NO tugmasi: unga yaqinlashganda kartochka ichida boshqa joyga qochadi
+function runAway() {
+  // tugma kartochka ichida erkin yura olishi uchun
+  noButton.style.position = "absolute";
+
+  // tugma kartochkadan chiqib ketmasligi uchun ruxsat etilgan maksimal joy
+  const maxX = card.clientWidth - noButton.offsetWidth;
+  const maxY = card.clientHeight - noButton.offsetHeight;
+
+  // tasodifiy joy tanlaymiz (0 dan maksimumgacha)
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noButton.style.left = x + "px";
+  noButton.style.top = y + "px";
+}
+
+// kompyuterda: kursor tugmaga tegishi bilan
+noButton.addEventListener("mouseenter", runAway);
+
+// telefonda: barmoq tegishi bilan (bosilib ketmasligi uchun preventDefault)
+noButton.addEventListener("touchstart", function (event) {
+  event.preventDefault();
+  runAway();
+});</script>
+</body>
+</html>
